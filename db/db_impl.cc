@@ -8,6 +8,7 @@
 #include <stdio.h>
 
 #include <algorithm>
+#include <climits>
 #include <set>
 #include <string>
 #include <vector>
@@ -97,7 +98,7 @@ Options SanitizeOptions(const std::string& dbname,
   result.comparator = icmp;
   result.filter_policy = (src.filter_policy != nullptr) ? ipolicy : nullptr;
   ClipToRange(&result.max_open_files,    64 + kNumNonTableCacheFiles, 50000);
-  ClipToRange(&result.write_buffer_size, 64<<10,                      1<<30);
+  ClipToRange(&result.write_buffer_size, 64ULL<<10,              ULLONG_MAX);
   ClipToRange(&result.max_file_size,     1<<20,                       1<<30);
   ClipToRange(&result.block_size,        1<<10,                       4<<20);
   if (result.info_log == nullptr) {

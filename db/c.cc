@@ -425,7 +425,7 @@ void leveldb_options_set_info_log(leveldb_options_t* opt, leveldb_logger_t* l) {
   opt->rep.info_log = (l ? l->rep : nullptr);
 }
 
-void leveldb_options_set_write_buffer_size(leveldb_options_t* opt, size_t s) {
+void leveldb_options_set_write_buffer_size(leveldb_options_t* opt, unsigned long long s) {
   opt->rep.write_buffer_size = s;
 }
 

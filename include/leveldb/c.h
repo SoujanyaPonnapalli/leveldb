@@ -177,7 +177,7 @@ LEVELDB_EXPORT void leveldb_options_set_env(leveldb_options_t*, leveldb_env_t*);
 LEVELDB_EXPORT void leveldb_options_set_info_log(leveldb_options_t*,
                                                  leveldb_logger_t*);
 LEVELDB_EXPORT void leveldb_options_set_write_buffer_size(leveldb_options_t*,
-                                                          size_t);
+                                                          unsigned long long);
 LEVELDB_EXPORT void leveldb_options_set_max_open_files(leveldb_options_t*, int);
 LEVELDB_EXPORT void leveldb_options_set_cache(leveldb_options_t*,
                                               leveldb_cache_t*);

@@ -81,7 +81,7 @@ struct LEVELDB_EXPORT Options {
   // the next time the database is opened.
   //
   // Default: 4MB
-  size_t write_buffer_size;
+  unsigned long long write_buffer_size;
 
   // Number of open files that can be used by the DB.  You may need to
   // increase this if your database has a large working set (budget

@@ -81,7 +81,7 @@ static bool FLAGS_histogram = false;
 
 // Number of bytes to buffer in memtable before compacting
 // (initialized to default value by "main")
-static int FLAGS_write_buffer_size = 0;
+static unsigned long long FLAGS_write_buffer_size = 0;
 
 // Number of bytes written to each file.
 // (initialized to default value by "main")
