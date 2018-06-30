@@ -10,7 +10,7 @@
 namespace leveldb {
 
 // Defining the default write buffer size as 4GB
-#define WRITE_BUFFER_SIZE_4GB 34359738368
+#define WRITE_BUFFER_SIZE_4GB 34359738368 // 2^35
 
 Options::Options()
     : comparator(BytewiseComparator()),

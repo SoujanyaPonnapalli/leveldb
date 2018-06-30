@@ -29,9 +29,13 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <iostream>
+
+#include "db_crypto.h"
 #include "port/port.h"
 #include "util/arena.h"
 #include "util/random.h"
+#include <iostream>
 
 namespace leveldb {
 
@@ -145,9 +149,12 @@ class SkipList {
 // Implementation details follow
 template<typename Key, class Comparator>
 struct SkipList<Key,Comparator>::Node {
-  explicit Node(const Key& k) : key(k) { }
+  explicit Node(const Key& k) : key(k) {
+    cryptoHash ch; hash = ch.getHash(key);
+  }
 
   Key const key;
+  std::string hash;
 
   // Accessors/mutators for links.  Wrapped in methods so we can
   // add the appropriate barriers as necessary.
@@ -367,6 +374,7 @@ void SkipList<Key,Comparator>::Insert(const Key& key) {
     x->NoBarrier_SetNext(i, prev[i]->NoBarrier_Next(i));
     prev[i]->SetNext(i, x);
   }
+  std::cout << "NewNode inserted with hash: " << x->hash << std::endl;
 }
 
 template<typename Key, class Comparator>
